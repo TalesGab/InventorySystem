@@ -1,0 +1,15 @@
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.AssemblyInfoInputs.cache
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.AssemblyInfo.cs
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.csproj.CoreCompileInputs.cache
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.sourcelink.json
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\bin\Debug\net10.0\EstoqueApp.exe
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\bin\Debug\net10.0\EstoqueApp.deps.json
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\bin\Debug\net10.0\EstoqueApp.runtimeconfig.json
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\bin\Debug\net10.0\EstoqueApp.dll
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\bin\Debug\net10.0\EstoqueApp.pdb
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.dll
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\refint\EstoqueApp.dll
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.pdb
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\EstoqueApp.genruntimeconfig.cache
+C:\Users\tales\Sistema de Estoque\InventorySystem\EstoqueApp\obj\Debug\net10.0\ref\EstoqueApp.dll
