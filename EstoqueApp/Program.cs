@@ -1,7 +1,11 @@
 ﻿using EstoqueApp.Models;
 using EstoqueApp.Services;
+using EstoqueApp.Data;
 
 EstoqueService estoque = new EstoqueService();
+
+Database db = new Database();
+db.CriarTabela();
 
 while (true)
 {
@@ -14,25 +18,17 @@ while (true)
     Console.WriteLine("4 - Saída de estoque");
     Console.WriteLine("0 - Sair");
 
-    Console.Write("\nEscolha: ");
-    int opcao = int.Parse(Console.ReadLine());
+    int opcao = LerInt("\nEscolha: ");
 
     Console.Clear();
 
     switch (opcao)
     {
         case 1:
-            Console.Write("ID: ");
-            int id = int.Parse(Console.ReadLine());
-
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Quantidade: ");
-            int qtd = int.Parse(Console.ReadLine());
-
-            Console.Write("Preço: ");
-            double preco = double.Parse(Console.ReadLine());
+            int id = LerInt("ID: ");
+            string nome = LerTexto("Nome: ");
+            int qtd = LerInt("Quantidade: ");
+            double preco = LerDouble("Preço: ");
 
             Produto p = new Produto
             {
@@ -51,21 +47,15 @@ while (true)
             break;
 
         case 3:
-            Console.Write("ID do produto: ");
-            int idEntrada = int.Parse(Console.ReadLine());
-
-            Console.Write("Quantidade: ");
-            int qtdEntrada = int.Parse(Console.ReadLine());
+            int idEntrada = LerInt("ID do produto: ");
+            int qtdEntrada = LerInt("Quantidade: ");
 
             estoque.Entrada(idEntrada, qtdEntrada);
             break;
 
         case 4:
-            Console.Write("ID do produto: ");
-            int idSaida = int.Parse(Console.ReadLine());
-
-            Console.Write("Quantidade: ");
-            int qtdSaida = int.Parse(Console.ReadLine());
+            int idSaida = LerInt("ID do produto: ");
+            int qtdSaida = LerInt("Quantidade: ");
 
             estoque.Saida(idSaida, qtdSaida);
             break;
@@ -80,4 +70,69 @@ while (true)
 
     Console.WriteLine("\nPressione qualquer tecla para continuar...");
     Console.ReadKey();
+}
+
+//////////////////////////////////////////////////////////
+
+int LerInt(string mensagem)
+{
+    int valor;
+    bool valido;
+
+    do
+    {
+        Console.Write(mensagem);
+        string entrada = Console.ReadLine();
+
+        valido = int.TryParse(entrada, out valor);
+
+        if (!valido || valor < 0)
+        {
+            Console.WriteLine("Digite um número inteiro válido e positivo.");
+        }
+
+    } while (!valido || valor < 0);
+
+    return valor;
+}
+
+double LerDouble(string mensagem)
+{
+    double valor;
+    bool valido;
+
+    do
+    {
+        Console.Write(mensagem);
+        string entrada = Console.ReadLine();
+
+        valido = double.TryParse(entrada, out valor);
+
+        if (!valido || valor < 0)
+        {
+            Console.WriteLine("Digite um número válido e positivo.");
+        }
+
+    } while (!valido || valor < 0);
+
+    return valor;
+}
+
+string LerTexto(string mensagem)
+{
+    string texto;
+
+    do
+    {
+        Console.Write(mensagem);
+        texto = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(texto))
+        {
+            Console.WriteLine("Texto não pode ser vazio.");
+        }
+
+    } while (string.IsNullOrWhiteSpace(texto));
+
+    return texto;
 }
