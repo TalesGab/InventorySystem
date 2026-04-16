@@ -11,20 +11,31 @@ while (true)
 {
     Console.Clear();
 
-    Console.WriteLine("===== SISTEMA DE ESTOQUE =====");
-    Console.WriteLine("1 - Adicionar produto");
-    Console.WriteLine("2 - Listar produtos");
-    Console.WriteLine("3 - Entrada de estoque");
-    Console.WriteLine("4 - Saída de estoque");
-    Console.WriteLine("0 - Sair");
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("=======================================");
+    Console.WriteLine("        SISTEMA DE ESTOQUE");
+    Console.WriteLine("=======================================");
+    Console.ResetColor();
 
-    int opcao = LerInt("\nEscolha: ");
+    Console.WriteLine();
+    Console.WriteLine(" 1 - Adicionar produto");
+    Console.WriteLine(" 2 - Listar produtos");
+    Console.WriteLine(" 3 - Entrada de estoque");
+    Console.WriteLine(" 4 - Saída de estoque");
+    Console.WriteLine(" 5 - Buscar produto");
+    Console.WriteLine(" 6 - Ver estoque baixo");
+    Console.WriteLine(" 0 - Sair");
+    Console.WriteLine();
+
+    int opcao = LerInt(" Escolha uma opção: ");
 
     Console.Clear();
 
     switch (opcao)
     {
         case 1:
+            Console.WriteLine("\n--- Cadastro de Produto ---\n");
+
             int id = LerInt("ID: ");
             string nome = LerTexto("Nome: ");
             int qtd = LerInt("Quantidade: ");
@@ -39,7 +50,10 @@ while (true)
             };
 
             estoque.AdicionarProduto(p);
-            Console.WriteLine("\nProduto adicionado!");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n✔ Produto adicionado!");
+            Console.ResetColor();
             break;
 
         case 2:
@@ -47,6 +61,8 @@ while (true)
             break;
 
         case 3:
+            Console.WriteLine("\n--- Entrada de Estoque ---\n");
+
             int idEntrada = LerInt("ID do produto: ");
             int qtdEntrada = LerInt("Quantidade: ");
 
@@ -54,17 +70,33 @@ while (true)
             break;
 
         case 4:
+            Console.WriteLine("\n--- Saída de Estoque ---\n");
+
             int idSaida = LerInt("ID do produto: ");
             int qtdSaida = LerInt("Quantidade: ");
 
             estoque.Saida(idSaida, qtdSaida);
             break;
 
+        case 5:
+            Console.WriteLine("\n--- Buscar Produto ---\n");
+
+            string nomeBusca = LerTexto("Digite o nome: ");
+            estoque.BuscarProduto(nomeBusca);
+            break;
+        case 6:
+            Console.WriteLine("\n--- Estoque Baixo ---\n");
+
+            int limite = LerInt("Mostrar produtos com quantidade até: ");
+            estoque.EstoqueBaixo(limite);
+            break;
         case 0:
             return;
 
         default:
-            Console.WriteLine("Opção inválida!");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("❌ Opção inválida!");
+            Console.ResetColor();
             break;
     }
 
@@ -82,13 +114,15 @@ int LerInt(string mensagem)
     do
     {
         Console.Write(mensagem);
-        string entrada = Console.ReadLine();
+        string entrada = Console.ReadLine() ?? "";
 
         valido = int.TryParse(entrada, out valor);
 
         if (!valido || valor < 0)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite um número inteiro válido e positivo.");
+            Console.ResetColor();
         }
 
     } while (!valido || valor < 0);
@@ -104,13 +138,15 @@ double LerDouble(string mensagem)
     do
     {
         Console.Write(mensagem);
-        string entrada = Console.ReadLine();
+        string entrada = Console.ReadLine() ?? "";
 
         valido = double.TryParse(entrada, out valor);
 
         if (!valido || valor < 0)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Digite um número válido e positivo.");
+            Console.ResetColor();
         }
 
     } while (!valido || valor < 0);
@@ -125,11 +161,13 @@ string LerTexto(string mensagem)
     do
     {
         Console.Write(mensagem);
-        texto = Console.ReadLine();
+        texto = Console.ReadLine() ?? "";
 
         if (string.IsNullOrWhiteSpace(texto))
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Texto não pode ser vazio.");
+            Console.ResetColor();
         }
 
     } while (string.IsNullOrWhiteSpace(texto));
